@@ -1,0 +1,38 @@
+apply plugin: 'java'
+apply plugin: 'eclipse'
+ 
+project(":Tool"){
+	apply plugin: "java"
+	println "project name is $name"
+	task toolTask << {
+		println "Task name is $name"
+	}
+}
+
+project(":Employee"){
+	apply plugin: 'java'
+
+	repositories {
+	    mavenCentral()
+	}
+	println "Project name is $name"
+	task employeeTask << {
+		println "Task name is $name"
+	}
+}
+
+project(":application"){
+	apply plugin: 'java'
+	println "Project name is $name"
+ 
+	dependencies{
+		compile project(':Employee')
+		compile project(':Tool')
+	}
+
+}
+
+
+ 
+
+ 
