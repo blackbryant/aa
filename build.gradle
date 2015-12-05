@@ -5,9 +5,14 @@ apply plugin: 'checkstyle'
  
 project(":Tool"){
 	apply plugin: "java"
+	
 	println "project name is $name"
 	task toolTask << {
 		println "Task name is $name"
+	}
+	checkstyle {
+		toolVersion = 6.5
+		ignoreFailures = true
 	}
 }
 
@@ -16,8 +21,6 @@ project(":Employee"){
 
 	repositories {
 	    mavenCentral()
-	    compile gradleApi()
-		compile localGroovy()
 	}
 	println "Project name is $name"
 	task employeeTask << {
@@ -38,6 +41,10 @@ project(":application"){
 	dependencies{
 		compile project(':Employee')
 		compile project(':Tool')
+	}
+	checkstyle {
+		toolVersion = 6.5
+		ignoreFailures = true
 	}
 
 }
